@@ -1,8 +1,13 @@
 package ru.netology.data;
+
 import lombok.Value;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DataHelper {
-    private DataHelper () {}
+    private DataHelper() {
+    }
 
     @Value
     public static class AuthInfo {
@@ -24,15 +29,14 @@ public class DataHelper {
     }
 
     @Value
-    public static class CardNumber{
+    public static class CardNumber {
         private String number;
     }
 
-    public static CardNumber firstCardNumber () {
-        return new CardNumber ("5559 0000 0000 0001");
-    }
-
-    public static CardNumber secondCardNumber () {
-        return new CardNumber ("5559 0000 0000 0002");
+    public static String getCardNumber(int cardCount) {
+        List<String> cardsNumber = new ArrayList<>();
+        cardsNumber.add("5559 0000 0000 0001");
+        cardsNumber.add("5559 0000 0000 0002");
+        return cardsNumber.get(cardCount);
     }
 }
