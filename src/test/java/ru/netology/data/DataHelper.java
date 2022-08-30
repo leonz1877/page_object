@@ -29,7 +29,7 @@ public class DataHelper {
     }
 
     @Value
-    public static class CardNumber {
+    public static class Card {
         private String number;
     }
 

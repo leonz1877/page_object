@@ -2,7 +2,6 @@ package ru.netology.page;
 
 import com.codeborne.selenide.ElementsCollection;
 import lombok.val;
-import ru.netology.data.DataHelper;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
@@ -17,8 +16,9 @@ public class DashboardPage {
     public DashboardPage() {
     }
 
-    public int CardBalance(int cardCount) {
-        val text = cards.get(cardCount - 1).text();
+    public int cardBalance(int cardCount) {
+        val t
+        ext = cards.get(cardCount - 1).text();
         return extractBalance(text);
     }
 
@@ -29,16 +29,18 @@ public class DashboardPage {
         return Integer.parseInt(value);
     }
 
-    public static DashboardPage putMoneyToCard(int cardCount, int amount) {
+    public static TransferPage putMoneyToCard(int cardCount) {
         $(buttonsAction.get(cardCount - 1)).click();
-        $("[data-test-id= amount] input").setValue(String.valueOf(amount));
-        String where;
-        if (cardCount == 1) {
-            where = String.valueOf(1);
-        } else where = String.valueOf(0);
-        $("[data-test-id=from] input").setValue(DataHelper.getCardNumber(Integer.parseInt(where)));
-        $("[data-test-id=action-transfer]").click();
 
-        return new DashboardPage();
+
+        //$("[data-test-id= amount] input").setValue(String.valueOf(amount));
+        //String where;
+        //if (cardCount == 1) {
+        //    where = String.valueOf(1);
+        //} else where = String.valueOf(0);
+        //$("[data-test-id=from] input").setValue(DataHelper.getCardNumber(Integer.parseInt(where)));
+        //$("[data-test-id=action-transfer]").click();
+
+        return new TransferPage();
     }
 }
