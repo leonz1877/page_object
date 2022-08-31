@@ -16,6 +16,7 @@ public class TransferPage {
     public TransferPage() {
     }
 
+
     //public int cardBalance(int cardCount) {
     //    val text = cards.get(cardCount - 1).text();
     //    return extractBalance(text);
@@ -29,13 +30,16 @@ public class TransferPage {
     //}
 
     public static DashboardPage transferMoneyToCard(int cardCount, int amount) {
+
         //$(buttonsAction.get(cardCount - 1)).click();
-        $("[data-test-id= amount] input").setValue(String.valueOf(amount));
+        $("[data-test-id= amount] input")
+                .setValue(String.valueOf(amount));
         String where;
         if (cardCount == 1) {
             where = String.valueOf(1);
         } else where = String.valueOf(0);
-        $("[data-test-id=from] input").setValue(DataHelper.getCardNumber(Integer.parseInt(where)));
+        $("[data-test-id=from] input")
+                .setValue(DataHelper.getCardNumber(Integer.parseInt(where)));
         $("[data-test-id=action-transfer]").click();
 
         return new DashboardPage();

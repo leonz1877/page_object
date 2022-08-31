@@ -17,8 +17,7 @@ public class DashboardPage {
     }
 
     public int cardBalance(int cardCount) {
-        val t
-        ext = cards.get(cardCount - 1).text();
+        val text = cards.get(cardCount - 1).text();
         return extractBalance(text);
     }
 

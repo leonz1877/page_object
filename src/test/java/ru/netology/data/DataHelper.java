@@ -28,10 +28,10 @@ public class DataHelper {
         return new VerificationCode("12345");
     }
 
-    @Value
-    public static class Card {
-        private String number;
-    }
+    //@Value
+    //public static class Card {
+    //    private String number;
+    //}
 
     public static String getCardNumber(int cardCount) {
         List<String> cardsNumber = new ArrayList<>();
