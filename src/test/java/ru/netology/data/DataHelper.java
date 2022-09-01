@@ -28,15 +28,18 @@ public class DataHelper {
         return new VerificationCode("12345");
     }
 
-    //@Value
-    //public static class Card {
-    //    private String number;
-    //}
+    @Value
+    public static class Card {
+        private String number;
+    }
+
+    static Card card1 = new Card ("5559 0000 0000 0001");
+    static Card card2 = new Card ("5559 0000 0000 0002");
 
     public static String getCardNumber(int cardCount) {
-        List<String> cardsNumber = new ArrayList<>();
-        cardsNumber.add("5559 0000 0000 0001");
-        cardsNumber.add("5559 0000 0000 0002");
-        return cardsNumber.get(cardCount);
+        List<Card> cardsNumber = new ArrayList<>();
+        cardsNumber.add(card1);
+        cardsNumber.add(card2);
+        return cardsNumber.get(cardCount-1).getNumber();
     }
 }

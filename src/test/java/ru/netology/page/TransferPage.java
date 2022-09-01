@@ -29,17 +29,13 @@ public class TransferPage {
     //    return Integer.parseInt(value);
     //}
 
-    public static DashboardPage transferMoneyToCard(int cardCount, int amount) {
+    public static DashboardPage transferMoneyToCard(int cardOut,int amount) {
 
         //$(buttonsAction.get(cardCount - 1)).click();
         $("[data-test-id= amount] input")
                 .setValue(String.valueOf(amount));
-        String where;
-        if (cardCount == 1) {
-            where = String.valueOf(1);
-        } else where = String.valueOf(0);
         $("[data-test-id=from] input")
-                .setValue(DataHelper.getCardNumber(Integer.parseInt(where)));
+                .setValue(String.valueOf(DataHelper.getCardNumber(cardOut)));
         $("[data-test-id=action-transfer]").click();
 
         return new DashboardPage();
