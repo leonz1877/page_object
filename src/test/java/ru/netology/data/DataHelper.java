@@ -33,13 +33,13 @@ public class DataHelper {
         private String number;
     }
 
-    static Card card1 = new Card ("5559 0000 0000 0001");
-    static Card card2 = new Card ("5559 0000 0000 0002");
+    static Card card1 = new Card("5559 0000 0000 0001");
+    static Card card2 = new Card("5559 0000 0000 0002");
 
     public static String getCardNumber(int cardCount) {
         List<Card> cardsNumber = new ArrayList<>();
         cardsNumber.add(card1);
         cardsNumber.add(card2);
-        return cardsNumber.get(cardCount-1).getNumber();
+        return cardsNumber.get(cardCount - 1).getNumber();
     }
 }
