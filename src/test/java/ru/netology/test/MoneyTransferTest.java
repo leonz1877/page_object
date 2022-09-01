@@ -30,8 +30,8 @@ class MoneyTransferTest {
         var loginPage = LoginPage
                 .validLogin(authInfo)
                 .validVerify(DataHelper.getVerificationCodeFor(authInfo));
-        int startBalanceIn = new DashboardPage().cardBalance(cardIn);
-        int startBalanceOut = new DashboardPage().cardBalance(cardOut);
+        int startBalanceIn = loginPage.cardBalance(cardIn);
+        int startBalanceOut = loginPage.cardBalance(cardOut);
         var dashboardPage = DashboardPage.putMoneyToCard(cardIn);
         var transferPage = TransferPage.transferMoneyToCard(cardOut, amount);
 
@@ -49,8 +49,8 @@ class MoneyTransferTest {
         var loginPage = LoginPage
                 .validLogin(authInfo)
                 .validVerify(DataHelper.getVerificationCodeFor(authInfo));
-        int startBalanceIn = new DashboardPage().cardBalance(cardIn);
-        int startBalanceOut = new DashboardPage().cardBalance(cardOut);
+        int startBalanceIn = loginPage.cardBalance(cardIn);
+        int startBalanceOut = loginPage.cardBalance(cardOut);
         var dashboardPage = DashboardPage.putMoneyToCard(cardIn);
         var transferPage = TransferPage.transferMoneyToCard(cardOut, amount);
 
