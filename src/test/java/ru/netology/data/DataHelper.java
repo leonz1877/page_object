@@ -30,7 +30,7 @@ public class DataHelper {
 
     @Value
     public static class Card {
-        private String number;
+        String number;
     }
 
     static Card card1 = new Card("5559 0000 0000 0001");

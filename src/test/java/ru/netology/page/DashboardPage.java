@@ -3,13 +3,12 @@ package ru.netology.page;
 import com.codeborne.selenide.ElementsCollection;
 import lombok.val;
 
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class DashboardPage {
 
-    private static ElementsCollection buttonsAction = $$("[data-test-id=action-deposit]");
-    private static ElementsCollection cards = $$(".list__item div");
+    private ElementsCollection buttonsAction = $$("[data-test-id=action-deposit]");
+    private ElementsCollection cards = $$(".list__item div");
     private final String balanceStart = "баланс: ";
     private final String balanceFinish = " р.";
 
@@ -28,8 +27,8 @@ public class DashboardPage {
         return Integer.parseInt(value);
     }
 
-    public static TransferPage putMoneyToCard(int cardCount) {
-        $(buttonsAction.get(cardCount - 1)).click();
+    public TransferPage putMoneyToCard(int cardCount) {
+        buttonsAction.get(cardCount - 1).click();
 
         return new TransferPage();
     }

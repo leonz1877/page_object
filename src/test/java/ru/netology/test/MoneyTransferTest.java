@@ -1,24 +1,15 @@
 package ru.netology.test;
 
-import com.codeborne.selenide.Configuration;
+
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.data.DataHelper;
-import ru.netology.page.DashboardPage;
 import ru.netology.page.LoginPage;
-import ru.netology.page.TransferPage;
 
 import static com.codeborne.selenide.Selenide.open;
 
 
 class MoneyTransferTest {
-
-    @BeforeEach
-    void setup() {
-        open("http://localhost:9999");
-        Configuration.holdBrowserOpen = true;
-    }
 
     @Test
     void putMoneyCardOne() {
@@ -26,17 +17,18 @@ class MoneyTransferTest {
         int cardOut = 2;
         int amount = 3000;
 
+        var loginpage = open("http://localhost:9999", LoginPage.class);
         var authInfo = DataHelper.getAuthInfo();
-        var loginPage = LoginPage
-                .validLogin(authInfo)
-                .validVerify(DataHelper.getVerificationCodeFor(authInfo));
-        int startBalanceIn = loginPage.cardBalance(cardIn);
-        int startBalanceOut = loginPage.cardBalance(cardOut);
-        var dashboardPage = DashboardPage.putMoneyToCard(cardIn);
-        var transferPage = TransferPage.transferMoneyToCard(cardOut, amount);
+        var verifacationPage = loginpage.validLogin(authInfo);
+        var verificationCode = DataHelper.getVerificationCodeFor(authInfo);
+        var dashboardPage = verifacationPage.validVerify(verificationCode);
+        int startBalanceIn = dashboardPage.cardBalance(cardIn);
+        int startBalanceOut = dashboardPage.cardBalance(cardOut);
+        var transfertPage = dashboardPage.putMoneyToCard(cardIn);
+        dashboardPage = transfertPage.transferMoneyToCard(cardOut,amount);
 
-        Assertions.assertEquals((startBalanceIn + amount), transferPage.cardBalance(cardIn));
-        Assertions.assertEquals((startBalanceOut - amount), transferPage.cardBalance(cardOut));
+        Assertions.assertEquals((startBalanceIn + amount), dashboardPage.cardBalance(cardIn));
+        Assertions.assertEquals((startBalanceOut - amount), dashboardPage.cardBalance(cardOut));
     }
 
     @Test
@@ -45,16 +37,17 @@ class MoneyTransferTest {
         int cardOut = 1;
         int amount = 6000;
 
+        var loginpage = open("http://localhost:9999", LoginPage.class);
         var authInfo = DataHelper.getAuthInfo();
-        var loginPage = LoginPage
-                .validLogin(authInfo)
-                .validVerify(DataHelper.getVerificationCodeFor(authInfo));
-        int startBalanceIn = loginPage.cardBalance(cardIn);
-        int startBalanceOut = loginPage.cardBalance(cardOut);
-        var dashboardPage = DashboardPage.putMoneyToCard(cardIn);
-        var transferPage = TransferPage.transferMoneyToCard(cardOut, amount);
+        var verifacationPage = loginpage.validLogin(authInfo);
+        var verificationCode = DataHelper.getVerificationCodeFor(authInfo);
+        var dashboardPage = verifacationPage.validVerify(verificationCode);
+        int startBalanceIn = dashboardPage.cardBalance(cardIn);
+        int startBalanceOut = dashboardPage.cardBalance(cardOut);
+        var transfertPage = dashboardPage.putMoneyToCard(cardIn);
+        dashboardPage = transfertPage.transferMoneyToCard(cardOut,amount);
 
-        Assertions.assertEquals((startBalanceIn + amount), transferPage.cardBalance(cardIn));
-        Assertions.assertEquals((startBalanceOut - amount), transferPage.cardBalance(cardOut));
+        Assertions.assertEquals((startBalanceIn + amount), dashboardPage.cardBalance(cardIn));
+        Assertions.assertEquals((startBalanceOut - amount), dashboardPage.cardBalance(cardOut));
     }
 }

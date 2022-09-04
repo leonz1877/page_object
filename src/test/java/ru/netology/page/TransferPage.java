@@ -1,27 +1,25 @@
 package ru.netology.page;
 
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import ru.netology.data.DataHelper;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class TransferPage {
-
-    private static ElementsCollection buttonsAction = $$("[data-test-id=action-deposit]");
-    private static ElementsCollection cards = $$(".list__item div");
-
+    private ElementsCollection buttonsAction = $$("[data-test-id=action-deposit]");
+    private ElementsCollection cards = $$(".list__item div");
+    private SelenideElement amountField = $("[data-test-id= amount] input");
+    private SelenideElement cardOutField = $("[data-test-id=from] input");
+    private SelenideElement transferButton = $("[data-test-id=action-transfer]");
     public TransferPage() {
     }
 
-    public static DashboardPage transferMoneyToCard(int cardOut, int amount) {
-
-        $("[data-test-id= amount] input")
-                .setValue(String.valueOf(amount));
-        $("[data-test-id=from] input")
-                .setValue(String.valueOf(DataHelper.getCardNumber(cardOut)));
-        $("[data-test-id=action-transfer]").click();
-
-        return new DashboardPage();
+    public DashboardPage transferMoneyToCard(int cardOut, int amount) {
+       amountField.setValue(String.valueOf(amount));
+       cardOutField.setValue(String.valueOf(DataHelper.getCardNumber(cardOut)));
+       transferButton.click();
+       return new DashboardPage();
     }
 }
