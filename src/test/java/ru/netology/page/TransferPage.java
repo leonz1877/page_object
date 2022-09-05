@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$$;
 public class TransferPage {
     private ElementsCollection buttonsAction = $$("[data-test-id=action-deposit]");
     private ElementsCollection cards = $$(".list__item div");
-    private SelenideElement amountField = $("[data-test-id= amount] input");
+    private SelenideElement amountField = $("[data-test-id=amount] input");
     private SelenideElement cardOutField = $("[data-test-id=from] input");
     private SelenideElement transferButton = $("[data-test-id=action-transfer]");
 
