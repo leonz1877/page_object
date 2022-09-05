@@ -13,13 +13,14 @@ public class TransferPage {
     private SelenideElement amountField = $("[data-test-id= amount] input");
     private SelenideElement cardOutField = $("[data-test-id=from] input");
     private SelenideElement transferButton = $("[data-test-id=action-transfer]");
+
     public TransferPage() {
     }
 
     public DashboardPage transferMoneyToCard(int cardOut, int amount) {
-       amountField.setValue(String.valueOf(amount));
-       cardOutField.setValue(String.valueOf(DataHelper.getCardNumber(cardOut)));
-       transferButton.click();
-       return new DashboardPage();
+        amountField.setValue(String.valueOf(amount));
+        cardOutField.setValue(String.valueOf(DataHelper.getCardNumber(cardOut)));
+        transferButton.click();
+        return new DashboardPage();
     }
 }

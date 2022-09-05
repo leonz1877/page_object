@@ -25,7 +25,7 @@ class MoneyTransferTest {
         int startBalanceIn = dashboardPage.cardBalance(cardIn);
         int startBalanceOut = dashboardPage.cardBalance(cardOut);
         var transfertPage = dashboardPage.putMoneyToCard(cardIn);
-        dashboardPage = transfertPage.transferMoneyToCard(cardOut,amount);
+        dashboardPage = transfertPage.transferMoneyToCard(cardOut, amount);
 
         Assertions.assertEquals((startBalanceIn + amount), dashboardPage.cardBalance(cardIn));
         Assertions.assertEquals((startBalanceOut - amount), dashboardPage.cardBalance(cardOut));
@@ -45,7 +45,7 @@ class MoneyTransferTest {
         int startBalanceIn = dashboardPage.cardBalance(cardIn);
         int startBalanceOut = dashboardPage.cardBalance(cardOut);
         var transfertPage = dashboardPage.putMoneyToCard(cardIn);
-        dashboardPage = transfertPage.transferMoneyToCard(cardOut,amount);
+        dashboardPage = transfertPage.transferMoneyToCard(cardOut, amount);
 
         Assertions.assertEquals((startBalanceIn + amount), dashboardPage.cardBalance(cardIn));
         Assertions.assertEquals((startBalanceOut - amount), dashboardPage.cardBalance(cardOut));
